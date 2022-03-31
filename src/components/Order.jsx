@@ -1,9 +1,9 @@
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
 import SingleOrder from "./SingleOrder";
 
-const Order = ({ tableid, fetchOrdersFromTable, orderNames }) => {
+const Order = ({ tableid, fetchOrdersFromTable, orderNames, array }) => {
         const addOrder = async () => {
                 const orderid = uuidv4();
                 const newOrder = {
@@ -12,7 +12,7 @@ const Order = ({ tableid, fetchOrdersFromTable, orderNames }) => {
                         done: false,
                 };
                 console.log(newOrder);
-                await axios.post("http://localhost:3001/ordername", newOrder);
+                await axios.post("https://project-smokybar.herokuapp.com/ordername", newOrder);
                 fetchOrdersFromTable();
         };
         return (
@@ -34,7 +34,12 @@ const Order = ({ tableid, fetchOrdersFromTable, orderNames }) => {
                                                                         key={order.orderid + tableid}
                                                                         className="m-2 border-2 border-white p-2"
                                                                 >
-                                                                        <Link to={path}>ORDER {index}</Link>
+                                                                        <NavLink
+                                                                                to={path}
+                                                                                activeStyle={{ color: "black" }}
+                                                                        >
+                                                                                ORDER {index + 1}
+                                                                        </NavLink>
                                                                 </div>
                                                         )
                                                 );
@@ -46,7 +51,7 @@ const Order = ({ tableid, fetchOrdersFromTable, orderNames }) => {
                                         const path = `/orders/${order.orderid}`;
                                         return (
                                                 <Route exact path={path} key={order.orderid}>
-                                                        <SingleOrder order={order} />
+                                                        <SingleOrder order={order} array={array} />
                                                 </Route>
                                         );
                                 })}

@@ -4,10 +4,10 @@ import axios from "axios";
 import Order from "./Order";
 import TableNav from "./TableNav";
 
-const Orders = () => {
+const Orders = ({ array }) => {
         const [orderNames, setOrderNames] = useState([]);
         const fetchOrdersFromTable = async () => {
-                await axios.get(`http://localhost:3001/ordername`).then((res) => {
+                await axios.get(`https://project-smokybar.herokuapp.com/ordername`).then((res) => {
                         setOrderNames(res.data);
                         console.log(res.data);
                 });
@@ -24,6 +24,7 @@ const Orders = () => {
                                                 tableid={1}
                                                 fetchOrdersFromTable={fetchOrdersFromTable}
                                                 orderNames={orderNames}
+                                                array={array}
                                         />
                                 </Route>
                                 <Route path="/table2">
@@ -31,6 +32,7 @@ const Orders = () => {
                                                 tableid={2}
                                                 fetchOrdersFromTable={fetchOrdersFromTable}
                                                 orderNames={orderNames}
+                                                array={array}
                                         />
                                 </Route>
                                 <Route path="/table3">
@@ -38,6 +40,7 @@ const Orders = () => {
                                                 tableid={3}
                                                 fetchOrdersFromTable={fetchOrdersFromTable}
                                                 orderNames={orderNames}
+                                                array={array}
                                         />
                                 </Route>
                                 <Route path="/table4">
@@ -45,6 +48,7 @@ const Orders = () => {
                                                 tableid={4}
                                                 fetchOrdersFromTable={fetchOrdersFromTable}
                                                 orderNames={orderNames}
+                                                array={array}
                                         />
                                 </Route>
                                 <Route path="/table5">
@@ -52,6 +56,7 @@ const Orders = () => {
                                                 tableid={5}
                                                 fetchOrdersFromTable={fetchOrdersFromTable}
                                                 orderNames={orderNames}
+                                                array={array}
                                         />
                                 </Route>
                                 <Route path="/table6">
@@ -59,6 +64,7 @@ const Orders = () => {
                                                 tableid={6}
                                                 fetchOrdersFromTable={fetchOrdersFromTable}
                                                 orderNames={orderNames}
+                                                array={array}
                                         />
                                 </Route>
                         </Switch>

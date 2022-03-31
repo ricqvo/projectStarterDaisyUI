@@ -8,10 +8,9 @@ import Navbar from "./components/Navbar";
 
 function App() {
         const [array, setArray] = useState([]);
-        const [orderList, setOrderList] = useState([]);
 
         const fetchInventory = async () => {
-                await axios.get("http://localhost:3001/inventory").then((res) => {
+                await axios.get("https://project-smokybar.herokuapp.com/inventory").then((res) => {
                         setArray(res.data);
                         console.log(res.data);
                 });
@@ -25,7 +24,7 @@ function App() {
                         <Navbar />
                         <Switch>
                                 <Route exact path="/orders">
-                                        <Orders />
+                                        <Orders array={array} />
                                 </Route>
                                 <Route exact path="/inventory">
                                         <Inventory array={array} setArray={setArray} fetchInventory={fetchInventory} />
