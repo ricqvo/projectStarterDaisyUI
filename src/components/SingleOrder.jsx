@@ -201,7 +201,7 @@ const SingleOrder = ({ order, array }) => {
                                                         Other
                                                 </button>
                                         </div>
-                                        <div className="m-2 text-white flex flex-col flex-wrap max-h-[40vh] overflow-hidden">
+                                        <div className="m-2 text-white flex flex-wrap">
                                                 {array.map((item, index) => {
                                                         return (
                                                                 item.type === category && (
